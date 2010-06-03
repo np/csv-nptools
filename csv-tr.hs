@@ -1,7 +1,4 @@
 import System.Environment
-import System.IO
-import Database.TxtSushi.FlatFile
-import Data.Char
 import Utils
 
 substChar :: Eq a => a -> a -> (a -> a)
@@ -14,7 +11,8 @@ csvTrCell (s:src)  (d:dst)  = csvTrCell src dst . map (substChar s d)
 csvTrCell _        _        = error "Source and destination should have the same length"
 
 csvTr :: String -> String -> FilePath -> IO ()
-csvTr src dst = interactTable (map . map $ csvTrCell (evalStr src) (evalStr dst))
+csvTr src dst = interactTable (map . map $ csvTrCell (onStr src) (onStr dst))
+  where onStr = expandRanges . evalStr
 
 main :: IO ()
 main = do

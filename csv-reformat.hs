@@ -1,6 +1,5 @@
 import Control.Arrow
 import System.Environment
-import System.IO
 import System.Console.GetOpt
 import Database.TxtSushi.FlatFile
 import Utils

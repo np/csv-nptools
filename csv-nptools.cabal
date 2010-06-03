@@ -1,0 +1,34 @@
+Name:           csv-nptools
+Cabal-Version:  >=1.4
+Version:        0.1.0
+License:        GPL
+Copyright:      (c) Nicolas Pouillard
+Author:         Nicolas Pouillard
+Maintainer:     Nicolas Pouillard <nicolas.pouillard@gmail.com>
+Category:       Development, Text, Utils
+Synopsis:       A collection of CSV tools
+Description:    A collection of CSV tools
+Stability:      Experimental
+Build-Type:     Simple
+
+--cleancsv.hs
+
+executable csv2html
+    main-is: csv2html.hs
+    Build-depends: base>=3&&<5, html, tabular, csv
+    ghc-options: -Wall -Odph
+
+executable csv-add-id
+    main-is: csv-add-id.hs
+    Build-depends: base>=3&&<5, txt-sushi
+    ghc-options: -Wall -Odph
+
+executable csv-reformat
+    main-is: csv-reformat.hs
+    Build-depends: base>=3&&<5, txt-sushi
+    ghc-options: -Wall -Odph
+
+executable csv-tr
+    main-is: csv-tr.hs
+    Build-depends: base>=3&&<5, txt-sushi
+    ghc-options: -Wall -Odph

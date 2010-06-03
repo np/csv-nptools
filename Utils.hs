@@ -2,7 +2,7 @@ module Utils where
 
 import Database.TxtSushi.FlatFile
 import Data.Char
-import Debug.Trace
+-- import Debug.Trace
 
 type Tbl = [[String]]
 
@@ -32,3 +32,7 @@ evalStr ('\\':x:xs)            = evalChar x  : evalStr xs
 evalStr (x:xs)                 = x           : evalStr xs
 evalStr []                     = []
 
+expandRanges :: String -> String
+expandRanges (x:'-':y:zs)  = [x..y]++expandRanges zs
+expandRanges (x:xs)        = x : expandRanges xs
+expandRanges []            = []
