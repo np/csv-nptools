@@ -18,6 +18,11 @@ executable csv2html
     Build-depends: base>=3&&<5, html, tabular, csv
     ghc-options: -Wall -Odph
 
+executable csv2json
+    main-is: csv2json.hs
+    Build-depends: base>=3&&<5, csv, json
+    ghc-options: -Wall -Odph
+
 executable csv-add-id
     main-is: csv-add-id.hs
     Build-depends: base>=3&&<5, txt-sushi
