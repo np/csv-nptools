@@ -16,6 +16,7 @@ csv2json f = do
   tbl <- parseTable csvFormat <$> getContentsFromFileOrStdin f
   return $ JSArray (map (JSArray . map (JSString . toJSString)) (tbl :: [[String]]))
 
+main :: IO ()
 main = do args <- getArgs
           js <-
             case args of

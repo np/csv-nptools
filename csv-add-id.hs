@@ -1,7 +1,5 @@
 import System.Environment
-import System.IO
 import Database.TxtSushi.FlatFile
-import Data.Char
 
 type Tbl = [[String]]
 
