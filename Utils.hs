@@ -9,6 +9,17 @@ type Tbl = [[String]]
 mapTable ::(Tbl -> Tbl) -> String -> String
 mapTable f = formatTable csvFormat . f . parseTable csvFormat
 
+padTbl :: a -> [[a]] -> [[a]]
+padTbl _     [] = []
+padTbl dflt  xss0@(xs0:_)
+  = zipWith (padRow cols) [1::Int ..] $ xss0
+  where cols = length xs0
+        -- padRow = take cols (xs ++ repeat dflt)
+        padRow 0 _ []      = []
+        padRow 0 i _       = error $ "Row " ++ show i ++ " is too long"
+        padRow n _ []      = replicate n dflt
+        padRow n i (x:xs)  = x : padRow (n - 1) i xs
+
 getContentsFromFileOrStdin :: FilePath -> IO String
 getContentsFromFileOrStdin "-"  = getContents
 getContentsFromFileOrStdin fp   = readFile fp
