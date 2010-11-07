@@ -18,7 +18,7 @@ executable csv2html
 
 executable csv2json
     main-is: csv2json.hs
-    Build-depends: base>=3&&<5, csv, json
+    Build-depends: base>=3&&<5, txt-sushi, json
     ghc-options: -Wall -Odph
 
 executable csv-add-id
