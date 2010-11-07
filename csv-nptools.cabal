@@ -40,3 +40,8 @@ executable csv-transpose
     main-is: csv-transpose.hs
     Build-depends: base>=3&&<5, txt-sushi
     ghc-options: -Wall -Odph
+
+executable csv-pad
+    main-is: csv-pad.hs
+    Build-depends: base>=3&&<5, txt-sushi
+    ghc-options: -Wall -Odph
