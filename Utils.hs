@@ -1,5 +1,6 @@
 module Utils where
 
+import System.IO
 import Database.TxtSushi.FlatFile
 import Data.Char
 -- import Debug.Trace
@@ -21,7 +22,7 @@ padTbl dflt  xss0@(xs0:_)
         padRow n i (x:xs)  = x : padRow (n - 1) i xs
 
 getContentsFromFileOrStdin :: FilePath -> IO String
-getContentsFromFileOrStdin "-"  = getContents
+getContentsFromFileOrStdin "-"  = hSetEncoding stdin latin1 >> getContents
 getContentsFromFileOrStdin fp   = readFile fp
 
 interactTable ::(Tbl -> Tbl) -> FilePath -> IO ()
