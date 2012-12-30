@@ -1,10 +1,6 @@
 import System.Environment (getArgs)
-import Utils (interactTable,padTbl)
+import Utils (interactTable,padTbl,getInput)
 
 main :: IO ()
-main = do args <- getArgs
-          let f = case args of
-                    []  -> "-"
-                    [s] -> s
-                    _   -> error "Usage: csv-pad [<file>|-]"
-          interactTable (padTbl "") f
+main = interactTable (padTbl "") . getInput err =<< getArgs
+  where err = error "Usage: csv-pad [<file>|-]"

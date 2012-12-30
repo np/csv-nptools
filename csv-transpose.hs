@@ -1,14 +1,8 @@
 import Data.List (transpose)
 import System.Environment (getArgs)
-import Utils (Tbl,interactTable,padTbl)
-
-transposeCSV :: Tbl -> Tbl
-transposeCSV = transpose . padTbl ""
+import Utils (interactTable,padTbl,getInput)
 
 main :: IO ()
-main = do args <- getArgs
-          case args of
-            []  -> interactTable transposeCSV "-"
-            [f] -> interactTable transposeCSV f
-            _   -> error "Usage: csv-transpose [<file>|-]"
+main = interactTable (transpose . padTbl "") . getInput err =<< getArgs
+  where err = error "Usage: csv-transpose [<file>|-]"
 

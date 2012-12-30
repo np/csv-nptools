@@ -12,16 +12,15 @@ import Utils
  -}
 
 csv2json :: FilePath -> IO JSValue
-csv2json f = do
-  tbl <- parseTable csvFormat <$> getContentsFromFileOrStdin f
-  return $ JSArray (map (JSArray . map (JSString . toJSString)) (tbl :: [[String]]))
+csv2json =
+  fmap (JSArray . map (JSArray . map (JSString . toJSString))
+                . parseTable csvFormat)
+     . getContentsFromFileOrStdin
 
 main :: IO ()
-main = do args <- getArgs
-          js <-
-            case args of
-              []  -> csv2json "-"
-              [f] -> csv2json f
-              fs  -> JSArray <$> mapM csv2json fs
-          putStrLn . encode $ js
+main = putStrLn . encode . mayJSArray
+   =<< mapM csv2json . addDefaultInput
+   =<< getArgs
 
+  where mayJSArray [x] = x
+        mayJSArray xs  = JSArray xs

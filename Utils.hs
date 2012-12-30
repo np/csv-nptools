@@ -48,3 +48,21 @@ expandRanges :: String -> String
 expandRanges (x:'-':y:zs)  = [x..y]++expandRanges zs
 expandRanges (x:xs)        = x : expandRanges xs
 expandRanges []            = []
+
+addDefaultInput :: [String] -> [String]
+addDefaultInput [] = ["-"]
+addDefaultInput xs = xs
+
+getInput :: String -> [String] -> String
+getInput _ []  = "-"
+getInput _ [x] = x
+getInput d _   = d
+
+substChar :: Eq a => a -> a -> (a -> a)
+substChar s d x  | x == s     = d
+                 | otherwise  = x
+
+zipWith' :: [c] -> (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ _ []     []     = []
+zipWith' d f (x:xs) (y:ys) = f x y : zipWith' d f xs ys
+zipWith' d _ _      _      = d
