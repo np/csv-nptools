@@ -1,18 +1,7 @@
 import System.Environment
 import Database.TxtSushi.FlatFile
 import Data.Char
-
-type Tbl = [[String]]
-
-mapTable ::(Tbl -> Tbl) -> String -> String
-mapTable f = formatTable csvFormat . f . parseTable csvFormat
-
-getContentsFromFileOrStdin :: FilePath -> IO String
-getContentsFromFileOrStdin "-"  = getContents
-getContentsFromFileOrStdin fp   = readFile fp
-
-interactTable ::(Tbl -> Tbl) -> FilePath -> IO ()
-interactTable f = (putStr . mapTable f =<<) . getContentsFromFileOrStdin
+import Utils
 
 addIdLn :: Int -> [String] -> [String]
 addIdLn 0 row = "ID":row
