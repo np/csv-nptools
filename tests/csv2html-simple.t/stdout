@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 FINAL//EN">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+  ><META HTTP-EQUIV = "Content-type" CONTENT = "text/html; charset=UTF-8"
+    ><STYLE TYPE = "text/css"
+    >table   { border-collapse: collapse; border: 1px solid; }
+th      { padding:0.2em; background-color: #eeeeee }
+td      { padding:0.2em; }
+.thinbottom  { border-bottom: 1px solid }
+.thickbottom { border-bottom: 3px solid }
+.thinright  { border-right: 1px solid }
+.thickright { border-right: 3px solid }
+</STYLE
+    ></HEAD
+  ><BODY
+  ><TABLE
+    ><TR
+      ><TH
+	></TH
+	><TH CLASS = "thinright"
+	>a</TH
+	><TH CLASS = "thinright"
+	>bb</TH
+	><TH
+	>ccc</TH
+	></TR
+      ><TR CLASS = "thinbottom"
+      ><TH
+	>1</TH
+	><TD CLASS = "thinright"
+	>1</TD
+	><TD CLASS = "thinright"
+	>23</TD
+	><TD
+	>456</TD
+	></TR
+      ><TR CLASS = "thinbottom"
+      ><TH
+	>2</TH
+	><TD CLASS = "thinright"
+	>foo</TD
+	><TD CLASS = "thinright"
+	>bar</TD
+	><TD
+	>baz</TD
+	></TR
+      ><TR
+      ><TH
+	>3</TH
+	><TD CLASS = "thinright"
+	></TD
+	><TD CLASS = "thinright"
+	></TD
+	><TD
+	></TD
+	></TR
+      ></TABLE
+    ></BODY
+  ></HTML
+>

@@ -21,7 +21,7 @@ simpleTable ph pv (hs:tbl) = Table rh ch tbl
 
 main :: IO ()
 main = putStr . H.renderHtml . layout . tabular2html . csv2tabular =<< parse =<< getArgs
-            
+
   where tabular2html  = Tab.render (H.toHtml . show) H.toHtml H.toHtml
         parse [arg]   = either (fail . show) return =<< parseCSVFromFile arg
         parse _       = fail "Usage: csv2html <file.csv>"
