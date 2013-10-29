@@ -1,5 +1,8 @@
 import Data.Functor
-import Text.JSON
+import Data.Aeson
+import qualified Data.Text as T
+import qualified Data.Vector as V
+import qualified Data.ByteString.Lazy.Char8 as L
 import Database.TxtSushi.FlatFile
 import System.Environment
 import Utils
@@ -11,16 +14,17 @@ import Utils
     up with the delimitors of both CSV and JSON.
  -}
 
-csv2json :: FilePath -> IO JSValue
+csv2json :: FilePath -> IO Value
 csv2json =
-  fmap (JSArray . map (JSArray . map (JSString . toJSString))
-                . parseTable csvFormat)
+  fmap (Array . fmap (Array . fmap (String . T.pack) . V.fromList)
+              . V.fromList
+              . parseTable csvFormat)
      . getContentsFromFileOrStdin
 
 main :: IO ()
-main = putStrLn . encode . mayJSArray
+main = L.putStrLn . encode . mayArray
    =<< mapM csv2json . addDefaultInput
    =<< getArgs
 
-  where mayJSArray [x] = x
-        mayJSArray xs  = JSArray xs
+  where mayArray [x] = x
+        mayArray xs  = Array $ V.fromList xs
